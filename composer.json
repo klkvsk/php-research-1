@@ -1,0 +1,8 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "autoload": {
+        "files": [ "lib/parser.php" ]
+    }
+}
