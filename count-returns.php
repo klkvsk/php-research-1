@@ -16,6 +16,10 @@ foreach (sources() as $source) {
     }
 }
 
-echo sprintf("Total returns: %-10s\nThis returns:  %-10s\n\n%.2f%%\n",
-    $numReturns, $numReturnThis, 100 * $numReturnThis / $numReturns
+echo sprintf("Total returns: %10s\n", $numReturns);
+echo sprintf("\$this returns: %10s\n", $numReturnThis);
+echo "\n";
+echo sprintf(
+    "Percent of \$this returned of all returns: %.2f %%\n",
+    100 * $numReturnThis / $numReturns
 );

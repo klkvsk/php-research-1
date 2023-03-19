@@ -17,7 +17,15 @@ function sources(): \Generator {
         for ($i = 0; $i < $zip->numFiles; $i++) {
             $stat = $zip->statIndex($i);
             if (str_ends_with($stat['name'], '.php')) {
-                yield $zip->getFromIndex($i);
+                $code = $zip->getFromIndex($i);
+                // strip string contents
+                $code = preg_replace('#(["\']).*?[^\\\\](?1)#', '""', $code);
+
+                // strip comments
+                $code = preg_replace('#/\*[\s\S]+?\*/#', '', $code);
+                $code = preg_replace('#//.+$#m', '', $code);
+
+                yield $code;
             }
         }
     }
